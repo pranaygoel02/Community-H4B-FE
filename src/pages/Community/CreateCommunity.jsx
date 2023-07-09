@@ -13,11 +13,11 @@ function CreateCommunity() {
   return (
     <section className="container-padding space-y-8">
         <h1 className="text-3xl font-bold -mt-8">Create Community</h1>
-      <div className="relative">
+      <div className="relative md:w-[50vh]">
         {imagePreview || communityInfo?.image ? (
           <img
             src={communityInfo?.image || imagePreview}
-            className="w-full h-[25vh] bg-accent rounded-lg"
+            className="w-full h-full bg-accent rounded-lg"
           />
         ) : (
           <div className="w-full h-[25vh] bg-accent rounded-lg"></div>
