@@ -4,6 +4,7 @@ import Map from "./src/pages/Community/Map";
 import Events from "./src/pages/Events/Events";
 import Landing from "./src/pages/Landing/Landing";
 import Leaders from "./src/pages/Leaders/Leaders";
+import Notifications from "./src/pages/Notifications/Notifications";
 import UpdateProfile from "./src/pages/User/UpdateProfile";
 
 export const routeConfig = [
@@ -49,6 +50,14 @@ export const routeConfig = [
         path: "/update-profile",
         element: UpdateProfile,
         name: "Update Profile",
+        showOnNav: false,
+        protected: true,
+        onlyWhenUser: true,
+    },
+    {
+        path: "/notifications",
+        element: Notifications,
+        name: "Notifications",
         showOnNav: false,
         protected: true,
         onlyWhenUser: true,
