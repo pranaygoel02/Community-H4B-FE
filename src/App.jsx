@@ -15,6 +15,7 @@ import Authentication from "./pages/Auth/Authentication";
 import UserAccount from "./pages/UserAccount/UserAccount";
 import SingleCommunity from "./pages/SingleCommunity/SingleCommunity";
 import CreateCommunity from "./pages/Community/CreateCommunity";
+import Login from "./pages/Auth/Login/Login";
 
 function App() {
   return (
@@ -28,7 +29,6 @@ function App() {
               <Route path="community" element={<Community />} />
               <Route path="community/:id" element={<SingleCommunity />} />
               <Route path='create-community' element={<ProtectedRoute onlyWhenUser={true}><CreateCommunity /></ProtectedRoute>} />
-              <Route path="community-leaders" element={<Leaders />} />
               <Route path="upcoming-events" element={<Events />} />
               <Route
                 path="update-profile"
@@ -43,7 +43,7 @@ function App() {
                   index path="login"
                   element={
                     <ProtectedRoute>
-                      <Signin />
+                      <Login />
                     </ProtectedRoute>
                   }
                 />
