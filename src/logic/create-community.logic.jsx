@@ -4,8 +4,12 @@ import { useUserContext } from "../context/user.context";
 import axios from "../axios/axiosInstance";
 import client from "../appwrite.config";
 import { Storage, ID } from "appwrite";
+import { useNavigate } from "react-router-dom";
 
 function CreateCommunityLogic() {
+
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState(null);
   const [name, setName] = useState(null);
   const [socials, setSocials] = useState([]);
@@ -221,6 +225,10 @@ function CreateCommunityLogic() {
             value: "github",
           },
           {
+            label: "Website",
+            value: "website",
+          },
+          {
             label: "Discord",
             value: "discord",
           },
@@ -349,7 +357,7 @@ function CreateCommunityLogic() {
       });
       console.log(resData);
       toast.success(resData?.message);
-      window.location.reload();
+      navigate('/community')
     } catch (err) {
       console.log(err);
       toast.error(err.message || err?.response?.data?.message);
