@@ -24,6 +24,10 @@
 .container-padding {
   @apply p-8 md:p-16 xl:px-[11rem]  xl:py-16  xl:pb-28;
 }
+.container-padding-mini {
+  @apply p-4 md:p-10 
+}
+
 
 
 a {
@@ -203,6 +207,9 @@ nav a {
 }
 .box-border-event-card{
   border-radius: 40px 40px 40px 40px;
+}
+.box-border-event-max{
+  border-radius: 100px 100px 0px 0px;
 }
 .events::-webkit-scrollbar{
   display: none;

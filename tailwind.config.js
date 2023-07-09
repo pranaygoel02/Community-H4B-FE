@@ -15,8 +15,9 @@ export default {
         neutral: "#F1F6F1",
         yellow:"#FEDFA8",
         orche: "#FFA352",
-        green: "#99D9B3"
-
+        green: "#99D9B3",
+        light:" #DCF7E8",
+        greenlight:"#ADDEFE"
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],

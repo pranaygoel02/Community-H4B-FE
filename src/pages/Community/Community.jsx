@@ -5,6 +5,7 @@ import { FaInstagram } from 'react-icons/fa';
 import { BsLinkedin } from 'react-icons/bs';
 import { BsGoogle } from 'react-icons/bs';
 import CommunityList from '../../components/Community/CommunityList';
+import Circle from '../../assets/images/circle.svg';
 
 function Community() {
   const socialLinks=[
@@ -39,14 +40,14 @@ function Community() {
   })
 
   return (
-    <div className=''>
-      <section id='community-hero' className='min-h-[542px] relative rounded-3xl bg-primary text-center py-8 md:py-0 flex flex-row justify-center items-center '>
-      <div className="absolute left-[15%] md:left-[15%] -bottom-4 h-8 aspect-square bg-orche rotate-45"></div>
-      <div className="absolute right-[15%] md:right-[17%] -top-4 h-8 aspect-square bg-green"></div>
-      <div className="absolute left-[50%] -bottom-[13%] hidden md:block md:-bottom-[13%] -translate-x-[50%] w-[15vh] h-[15vh] rounded-[55px] aspect-square bg-white"></div>
-        <div className='space-y-12 container-padding'>
-            <h1 className="font-bold text-5xl text-white">Search Local Communities Now!</h1>
-              <p className="md:max-w-[60%] mx-auto text-white">
+    <div className='bg-light box-border-event-max'>
+      <section id='community-hero' className='min-h-[542px] relative rounded-3xl  text-center py-8 md:py-0 flex flex-row justify-center items-center  '>
+      <div className="absolute left-[15%] md:right-[17%] top-72 h-8 aspect-square bg-orange-500"></div>
+      <div className="absolute right-[15%] md:right-[17%] bottom-5 h-8 bg-green-500"><img src={Circle} className="w-[32px]"/></div>
+      
+        <div className='space-y-12 container-padding relative '>
+            <h1 className="font-bold text-5xl text-black">Search Local Communities Now!</h1>
+              <p className="md:max-w-[60%] mx-auto text-black">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh cras
                 pulvinar mattis nunc sed blandit.
