@@ -24,6 +24,8 @@ function UserAccountLogic() {
   const [image, setImage] = useState(null);
   const [imageError, setImageError] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
+  const [communities, setCommunities] = useState([]);
+  const [bio, setBio] = useState(null);
 
   const { user, setUser } = useUserContext();
 
@@ -79,6 +81,14 @@ function UserAccountLogic() {
       placeholder: "Enter your name",
       value: name,
       cb: setName,
+    },
+    {
+      label: "Bio",
+      name: "bio",
+      placeholder: "Enter your bio",
+      value: bio,
+      cb: setBio,
+      type: "textarea",
     },
     {
       label: "Skills",
@@ -163,6 +173,23 @@ function UserAccountLogic() {
       ),
     },
   ];
+
+  // const getCommunityData = useCallback(async () => {
+  //   try {
+  //     const response = await axios.get('/community', {
+  //       headers: {
+  //         Authorization: `Bearer ${user.accessToken}`
+  //       }
+  //     })
+  //     setCommunities(prev => response.data)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }, [])
+
+  // useEffect(() => {
+  //   getCommunityData()
+  // }, [getCommunityData])
 
   const removeSocialField = (e) => {
     e?.preventDefault();
@@ -274,6 +301,10 @@ function UserAccountLogic() {
       toast.error(
         err?.response?.data?.message || err?.message || "Something went wrong"
       );
+    }
+    finally {
+      localStorage.removeItem("community-user");
+      setUser((prev) => null);
     }
   };
 
