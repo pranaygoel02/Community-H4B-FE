@@ -24,6 +24,10 @@
 .container-padding {
   @apply p-8 md:p-16 xl:px-[11rem]  xl:py-16  xl:pb-28;
 }
+.container-padding-mini {
+  @apply p-4 md:p-10 
+}
+
 
 
 a {
@@ -130,7 +134,17 @@ input:active, input:focus {
   @apply bg-secondary text-black rounded-[30px] border-[2px] font-extrabold border-black capitalize inline-flex items-center justify-center gap-2 py-[0.9rem] px-[1.5rem] absolute right-0 bottom-2 m-4 -rotate-[4.59deg] ;
   box-shadow: 2px 2px 0px 0px #000000;
 }
-
+.tag-scale{
+  @apply bg-secondary text-black rounded-[30px] border-[2px] font-extrabold border-black capitalize inline-flex items-center justify-center gap-2 py-[0.9rem] px-[1.5rem]  m-4 -rotate-[4.59deg] ;
+  box-shadow: 2px 2px 0px 0px #000000;
+}
+.tag-scale::before {
+  content: "";
+  position: absolute;
+  width: 90%;
+  height: 80%;
+  @apply rounded-[30px] z-[-1] border-[3px] border-black;
+}
 .tag::before {
   content: "";
   position: absolute;
@@ -204,6 +218,9 @@ nav a {
 .box-border-event-card{
   border-radius: 40px 40px 40px 40px;
 }
+.box-border-event-max{
+  border-radius: 100px 100px 0px 0px;
+}
 .events::-webkit-scrollbar{
   display: none;
   
@@ -232,4 +249,27 @@ nav a {
 }
 .event::-webkit-scrollbar{
   display: none;
+}
+.tilt-event{
+ /* Events */
+
+position: absolute;
+width: 103.69px;
+height: 39px;
+left: 8.5px;
+top: 18.44px;
+
+font-family: 'Space Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 30px;
+/* or 125% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #031926;
+
+transform: matrix(1, -0.09, 0.09, 1, 0, 0);
 }
