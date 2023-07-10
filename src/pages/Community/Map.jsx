@@ -199,7 +199,7 @@ const CITIES = [
   },
 ];
 
-function CommunityMap() {
+function CommunityMap({showDataList = true,style, width = '98.35vw', height='100vh'}) {
   const [popupInfo, setPopupInfo] = useState(null);
   const navigate = useNavigate();
 
@@ -304,13 +304,13 @@ function CommunityMap() {
           });
         }}
         style={{
-          width: "98.932vw",
-          height: "100vh",
+          width: width,
+          height: height,
         }}
-        mapStyle="mapbox://styles/mapbox/dark-v9"
+        mapStyle={style || "mapbox://styles/mapbox/dark-v9"}
         interactive="true"
       >
-         <section className="absolute z-10 flex flex-col gap-2 bg-slate-950/50 w-max top-0 left-0 p-4 m-4 h-[90vh] rounded-lg overflow-auto">
+        {showDataList &&  <section className="absolute z-10 flex flex-col gap-2 bg-slate-950/50 w-max top-0 left-0 p-4 m-4 h-[90vh] rounded-lg overflow-auto">
           <button className="p-2 bg-white rounded-md w-max"
             onClick={(e) => {
               e.preventDefault();
@@ -329,7 +329,7 @@ function CommunityMap() {
 
             ))
           }
-        </section>
+        </section>}
         
         <GeolocateControl position="top-right" />
         <FullscreenControl position="top-right" />

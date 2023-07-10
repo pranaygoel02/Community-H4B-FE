@@ -2,6 +2,7 @@ import React from 'react'
 import { HiLocationMarker } from "react-icons/hi";
 import EventsSection from './EventsSection';
 import Wavy from '../../assets/images/wavy.svg'
+import Brown from '../../assets/images/brown_elipsce.svg'
 
 function Events() {
   return (
@@ -10,7 +11,7 @@ function Events() {
         <img className=" w-full object-cover lg:col-span-1 relative lg:-translate-x-28 rounded-3xl" src={"https://placehold.co/600x400"} />
         <div className="space-y-8 lg:col-span-1 lg:pr-16 pr-0 relative lg:-translate-x-14">
           <div className="absolute right-[10%] bottom-[8%]  h-8 bg-green-500"><img src={Wavy} className="w-[130px] h-[120px]"/></div>
-
+          <div className="absolute -right-28 -top-48  h-8 bg-green-500"><img src={Brown} className="w-[130px] h-[120px]"/></div>
           <h1 className="font-bold text-5xl">Events Happening Now</h1>
           <p className="">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

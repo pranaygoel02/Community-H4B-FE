@@ -13,6 +13,10 @@ function Footer() {
 
   const navlinks=[
     {
+      name:"Home",
+      link:"/"
+    },
+    {
       name:"Community",
       link:"/community"
     },
@@ -52,15 +56,15 @@ function Footer() {
     }
   ]
   const NavLinks=()=>(
-    <div className='  flex flex-col justify-center leading-10'>
+    <div className='font-space  flex flex-col justify-center leading-10'>
         {navlinks.map((obj,id)=>(
-          <NavLink className={({isActive}) => isActive && 'footer-active'} to={obj.link} key={id}>{obj.name}</NavLink>
+          <Link className={obj.name === 'Contact Us'  && 'footer-active'} to={obj.link} key={id}>{obj.name}</Link>
         ))}
     </div>
   );
   const SocialComponent=()=>(
     <div className='   '>
-    <p className='leading-7 mb-5'>Lorem ipsum, dolor sit amet consectetur adipisicing elit
+    <p className='leading-7 font-roboto mb-5'>Lorem ipsum, dolor sit amet consectetur adipisicing elit
     Possimus non, enim doloribus adipisci, soluta quidem perspiciatis iste eos dolore iure nostrum nesciunt voluptatum obcaecati magni. Et officiis eveniet veniam ullam.</p>
     <div className='flex flex-row text-left'>
        {socialLinks.map((obj,id)=>(
@@ -79,7 +83,7 @@ function Footer() {
         <div className='w-1/4'>
 
         </div>
-        <div className='w-2/4 border-x-2 px-10'>
+        <div className='w-2/4 border-r-2 px-10'>
          <SocialComponent/>
         </div>
         <div className='w-1/4 mx-10 '>

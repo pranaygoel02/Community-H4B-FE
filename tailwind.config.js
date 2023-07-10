@@ -22,6 +22,7 @@ export default {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
         grostek: ["Space Grotesk", "sans-sarif"],
+        roboto: ["Roboto", "sans-sarif"],
       },
       screens: {
         "xs": "360px",

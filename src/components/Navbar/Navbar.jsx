@@ -11,6 +11,7 @@ import UserAccountLogic from "../../logic/useraccount.logic";
 import { BiLogOut, BiNotification, BiUser } from "react-icons/bi";
 import { FcSettings } from "react-icons/fc";
 import { MdCreate, MdNotifications, MdSettings } from "react-icons/md";
+import { motion } from "framer-motion";
 
 function Navbar() {
   const { user, setUser } = useUserContext();
@@ -37,7 +38,12 @@ function Navbar() {
   if (pathname.includes("map")) return null;
 
   return (
-    <nav className="inline-flex-between container-padding bg-neutral">
+    <motion.nav
+      initial={{ opacity: 0, y: -100, zIndex: 1000  }}
+      animate={{ opacity: 1, y: 0, zIndex: 1000  }}
+      transition={{ duration: 0.5 }}
+      className="inline-flex-between container-padding bg-neutral"
+    >
       <Link to="/">Logo</Link>
       <button onClick={toggleNav} id="nav-btn" className="">
         <HiMenuAlt3 className="text-2xl" />
@@ -94,34 +100,43 @@ function Navbar() {
             //   </NavLink>
             <>
               <div className="relative group">
-                <NavLink key={`${"/account"}${"My Account"}`} to={"/update-profile"}>
+                <NavLink
+                  key={`${"/account"}${"My Account"}`}
+                  to={"/update-profile"}
+                >
                   My Account
                 </NavLink>
-                <div className="grid-rows-0 h-0 group-hover:grid-rows-1 group-hover:h-[200px] transition-all duration-500 ease-out absolute top-8 -right-5 overflow-hidden">
-                  <div id="sub-nav-links" className="flex flex-col gap-4 items-start justify-start input-div w-max text-left">
+                <div className="grid-rows-0 h-0 group-hover:grid-rows-1 group-hover:h-[200px] transition-all duration-500 ease-out absolute top-12 -right-5 overflow-hidden">
+                  <div
+                    id="sub-nav-links"
+                    className="flex flex-col gap-4 items-start justify-start input-div w-max text-left"
+                  >
                     <Link
                       className="hover:text-primary w-full"
                       to="/update-profile"
                     >
-                      <BiUser/> Edit Profile
+                      <BiUser /> Edit Profile
                     </Link>
                     <Link
                       className="hover:text-primary w-full"
                       to="/notifications"
                     >
-                      <MdNotifications/> Notification
+                      <MdNotifications /> Notification
                     </Link>
                     <Link
                       className="hover:text-primary w-full"
                       to="/create-community"
                     >
-                      <MdCreate/> Create Community
+                      <MdCreate /> Create Community
                     </Link>
                     <Link className="hover:text-primary w-full" to="/settings">
-                      <MdSettings/> Settings
+                      <MdSettings /> Settings
                     </Link>
-                    <button onClick={logoutUser} className="m-0 text-left font-semibold w-full mt-1 pt-2 border-t border-black">
-                      <BiLogOut/> Logout
+                    <button
+                      onClick={logoutUser}
+                      className="m-0 text-left font-semibold w-full mt-1 pt-2 border-t border-black"
+                    >
+                      <BiLogOut /> Logout
                     </button>
                   </div>
                 </div>
@@ -130,7 +145,7 @@ function Navbar() {
           )}
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
 
