@@ -1,43 +1,26 @@
-import React from 'react'
+import {useCallback, useEffect, useState} from 'react'
 import { HiLocationMarker } from "react-icons/hi";
-import { BsFacebook } from 'react-icons/bs';
-import { FaInstagram } from 'react-icons/fa';
-import { BsLinkedin } from 'react-icons/bs';
-import { BsGoogle } from 'react-icons/bs';
 import CommunityList from '../../components/Community/CommunityList';
 import Circle from '../../assets/images/circle.svg';
+import axios  from '../../axios/axiosInstance';
 
 function Community() {
-  const socialLinks=[
-    {
-      icon:< BsFacebook className='w-[25px] h-[25px]'/>,
-      link:"/"
-    },
-    {
-      icon:< BsLinkedin className='w-[25px] h-[25px]'/>,
-      link:"/"
-    },
-    {
-      icon:< FaInstagram className='w-[25px] h-[25px]'/>,
-      link:"/"
-    },
-    
-    {
-      icon:< BsGoogle className='w-[25px] h-[25px]'/>,
-      link:"/"
+
+  const [communityData, setCommunityData] = useState([])
+
+  const getCommunityData = useCallback(async () => {
+    try {
+      const response = await axios.get('/community')
+      setCommunityData(prev => response.data)
+    } catch (error) {
+      console.log(error)
     }
-    
-  ]
+  }, [])
 
+  useEffect(() => {
+    getCommunityData()
+  }, [getCommunityData])
 
-  const communityData = Array.from({length: 15}).fill({
-    image: "https://placehold.co/600x400",
-    title: "Hack4Bengal",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta mollitia beatae maiores non assumenda vel accusantium rerum dolorem voluptatum, totam eius ipsam deserunt deleniti nobis soluta nulla explicabo impedit odio?",
-    categories: ["Tech", "Hackathon"],
-    socialLinks
-  })
 
   return (
     <div className='bg-light box-border-event-max'>

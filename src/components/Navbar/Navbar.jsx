@@ -8,9 +8,9 @@ import { useModalContext } from "../../context/modal.context";
 import { useEffect, useState } from "react";
 import Authentication from "../../pages/Auth/Authentication";
 import UserAccountLogic from "../../logic/useraccount.logic";
-import { BiLogOut, BiUser } from "react-icons/bi";
+import { BiLogOut, BiNotification, BiUser } from "react-icons/bi";
 import { FcSettings } from "react-icons/fc";
-import { MdCreate, MdSettings } from "react-icons/md";
+import { MdCreate, MdNotifications, MdSettings } from "react-icons/md";
 
 function Navbar() {
   const { user, setUser } = useUserContext();
@@ -104,6 +104,12 @@ function Navbar() {
                       to="/update-profile"
                     >
                       <BiUser/> Edit Profile
+                    </Link>
+                    <Link
+                      className="hover:text-primary w-full"
+                      to="/notifications"
+                    >
+                      <MdNotifications/> Notification
                     </Link>
                     <Link
                       className="hover:text-primary w-full"

@@ -17,6 +17,7 @@ import SingleCommunity from "./pages/SingleCommunity/SingleCommunity";
 import CreateCommunity from "./pages/Community/CreateCommunity";
 import Login from "./pages/Auth/Login/Login";
 import LandingPage from './pages/ScalingCommunity/LandingPage';
+import Notifications from "./pages/Notifications/Notifications";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route path='notifications' element={<ProtectedRoute onlyWhenUser={true}><Notifications /></ProtectedRoute>} />
               <Route path="auth" element={<ProtectedRoute><Authentication/></ProtectedRoute>}>
                 <Route
                   index path="login"
