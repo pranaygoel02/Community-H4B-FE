@@ -79,7 +79,7 @@ function Community() {
           <section className="bg-accent">
             <div className="container-padding space-y-12">
               <p className="text-left font-bold text-3xl">
-                Communities near XYZ
+                Communities
               </p>
               <CommunityList data={communityData} />
             </div>
