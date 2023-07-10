@@ -50,6 +50,9 @@ function Notifications() {
     <section className='container-padding'>
         <div className='font-bold text-xl -mt-5'>Notifications</div>
         {
+            notifications.length === 0 && <div className='text-sm py-4'>No notifications to show</div>
+        }
+        {
             notifications.map(notification => (
                 <div className='py-4 space-y-4 border-b-[2px] w-full'>
                     <p>{notification.message}</p>
