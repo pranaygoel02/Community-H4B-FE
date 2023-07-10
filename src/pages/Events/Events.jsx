@@ -2,16 +2,20 @@ import React from 'react'
 import { HiLocationMarker } from "react-icons/hi";
 import EventsSection from './EventsSection';
 import Wavy from '../../assets/images/wavy.svg'
+import Event from '../../assets/images/event.png';
 import Brown from '../../assets/images/brown_elipsce.svg'
+import CreateEvent from '../../assets/images/createEvent.png'
+
 
 function Events() {
   return (
       <>
       <section className="py-16 grid lg:grid-cols-2 md:grid-cols-1 items-center gap-8 px-10 lg:px-0 relative overflow-hidden">
-        <img className=" w-full object-cover lg:col-span-1 relative lg:-translate-x-28 rounded-3xl" src={"https://placehold.co/600x400"} />
+      <img className=" w-full object-cover lg:col-span-1 relative lg:-translate-x-28 rounded-3xl" src={Event} />
         <div className="space-y-8 lg:col-span-1 lg:pr-16 pr-0 relative lg:-translate-x-14">
-          <div className="absolute right-[10%] bottom-[8%]  h-8 bg-green-500"><img src={Wavy} className="w-[130px] h-[120px]"/></div>
+        <div className="absolute right-[10%] bottom-[8%]  h-8 bg-green-500"><img src={Wavy} className="w-[130px] h-[120px]"/></div>
           <div className="absolute -right-28 -top-48  h-8 bg-green-500"><img src={Brown} className="w-[130px] h-[120px]"/></div>
+
           <h1 className="font-bold text-5xl">Events Happening Now</h1>
           <p className="">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -41,7 +45,7 @@ function Events() {
           </p>
           <button className='btn-small'>Register Now</button>
         </div>
-        <img className="lg:col-span-2 w-full object-cover" src={"https://placehold.co/600x400"} />
+        <img className="lg:col-span-2 w-full object-cover" src={CreateEvent} />
       </section>
     </>
   )

@@ -13,6 +13,7 @@ import { FcSettings } from "react-icons/fc";
 import { MdCreate, MdNotifications, MdSettings } from "react-icons/md";
 import { motion } from "framer-motion";
 import { FaHandshake } from "react-icons/fa";
+import Logo from '../../assets/images/logo.svg'
 
 function Navbar() {
   const { user, setUser } = useUserContext();
@@ -45,7 +46,7 @@ function Navbar() {
       transition={{ duration: 0.5 }}
       className="inline-flex-between container-padding bg-neutral"
     >
-      <Link to="/">Logo</Link>
+      <Link to="/"><img src={Logo}/></Link>
       <button onClick={toggleNav} id="nav-btn" className="">
         <HiMenuAlt3 className="text-2xl" />
       </button>
