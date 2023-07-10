@@ -186,7 +186,7 @@ nav a {
 }
 .btn-small {
   padding: 5px 15px;
-  width: 200px;
+  /* width: 200px; */
   box-shadow: 2px 2px 0px 0px #000000;
   @apply bg-primary rounded-[30px] text-white border-[2px] border-black capitalize font-[400] inline-flex items-center justify-center gap-1;
 }

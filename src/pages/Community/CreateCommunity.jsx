@@ -5,18 +5,18 @@ import Input from "../../components/Input/Input";
 import { MdAddCircle, MdRemoveCircle } from "react-icons/md";
 
 function CreateCommunity() {
-  const {  inputs, imagePreview, handleImage, communityInfo, signingup, addNewSocialField, removeSocialField, submitUpdateForm, socials } =
+  const {  inputs, imagePreview, handleImage, communityInfo, signingup, addNewSocialField, removeSocialField, submitUpdateForm, socials, id } =
     CreateCommunityLogic();
 
     const fileRef = useRef(null);
 
   return (
     <section className="container-padding space-y-8">
-        <h1 className="text-3xl font-bold -mt-8">Create Community</h1>
+        <h1 className="text-3xl font-bold -mt-8">{id ? 'Edit' : 'Create'} Community</h1>
       <div className="relative md:w-[50vh]">
         {imagePreview || communityInfo?.image ? (
           <img
-            src={communityInfo?.image || imagePreview}
+            src={ imagePreview || communityInfo?.image}
             className="w-full h-full bg-accent rounded-lg"
           />
         ) : (
@@ -71,7 +71,7 @@ function CreateCommunity() {
           type="submit"
           className="text-center text-white bg-primary h-[50px] font-grostek text-xl w-full md:col-span-2 md:w-[50%] self-center relative left-[50%] transform translate-x-[-50%] my-8"
         >
-          {signingup ? "Creating..." : "Create Community"}
+          {signingup ? (id ? 'Saving...' : "Creating...") : `${id ? 'Edit' : 'Create'} Community`}
         </button>
       </form>
       <div></div>
