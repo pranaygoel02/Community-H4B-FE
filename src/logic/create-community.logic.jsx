@@ -5,8 +5,12 @@ import axios from "../axios/axiosInstance";
 import client from "../appwrite.config";
 import { Storage, ID } from "appwrite";
 import { useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 function CreateCommunityLogic() {
+
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get('id');
 
   const navigate = useNavigate();
 
@@ -51,6 +55,84 @@ function CreateCommunityLogic() {
       console.log(error);
     }
   }, []);
+
+  function getSocialField(name, link) {
+    return [
+      {
+        label: "Social Media",
+        name: "socialMedia",
+        placeholder: "Enter your social media",
+        type: "select",
+        defaultValue: name,
+        options: [
+          {
+            label: "Facebook",
+            value: "facebook",
+          },
+          {
+            label: "Instagram",
+            value: "instagram",
+          },
+          {
+            label: "Twitter",
+            value: "twitter",
+          },
+          {
+            label: "LinkedIn",
+            value: "linkedin",
+          },
+          {
+            label: "Github",
+            value: "github",
+          },
+          {
+            label: "Discord",
+            value: "discord",
+          },
+        ],
+      },
+      {
+        label: "Social Media Link",
+        name: "socialMediaLink",
+        placeholder: "Enter your social media link",
+        type: "text",
+        defaultValue: link,
+      },
+    ];
+  }
+
+  const getCommunityInfo = useCallback(async () => {
+    if(id) {
+      try {
+        const {data} = await axios.get(`/community/single/${id}`);
+        console.log(data);
+        setName(prev => data.name);
+        setEmail(prev => data.email);
+        // setSocials(prev => data.socials);
+        setCity(prev => data.city);
+        setState(prev => data.state);
+        setCountry(prev => data.country);
+        setLocation(prev => data.locationName);
+        setLatitude(prev => data.location[0]);
+        setLongitude(prev => data.location[1]);
+        setDescription(prev => data.description);
+        setCategory(prev => data.category.join(','));
+        setSocials((prev) =>
+        data?.socialLinks?.map((link) =>
+          getSocialField(link?.name, link?.link)
+        )
+      );
+      setImagePreview(prev => data.image);
+      }
+      catch (error) {
+        console.log(error);
+      }
+    }
+  }, [id]);
+
+  useEffect(() => {
+    getCommunityInfo();
+  }, [getCommunityInfo]);
 
   const getStateOptions = useCallback(async () => {
     try {
@@ -350,7 +432,11 @@ function CreateCommunityLogic() {
       data.location = [data.latitude, data.longitude]
       data.category = data.category.split(",").map((item) => item.trim());
       console.log(data);
-      const { data: resData } = await axios.post("/community/create", data, {
+      const { data: resData } = id ? await axios.put(`/community/${id}`, data, {
+        headers: {
+          Authorization: `Bearer ${user.accessToken}`,
+        }
+      }) : await axios.post("/community/create", data, {
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },
@@ -376,6 +462,7 @@ function CreateCommunityLogic() {
     handleImage,
     communityInfo,
     imagePreview,
+    id
   };
 }
 

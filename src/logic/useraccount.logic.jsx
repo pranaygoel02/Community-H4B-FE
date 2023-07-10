@@ -26,15 +26,16 @@ function UserAccountLogic() {
   const [imagePreview, setImagePreview] = useState(null);
   const [communities, setCommunities] = useState([]);
   const [bio, setBio] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   const { user, setUser } = useUserContext();
 
   const handleImage = (e) => {
     console.log(e.target.files[0]);
     if (e.target.files[0]) {
-      setImage(prev => e.target.files[0]);
+      setImage((prev) => e.target.files[0]);
       setImageError("");
-      setImagePreview(prev => URL.createObjectURL(e.target.files[0]));
+      setImagePreview((prev) => URL.createObjectURL(e.target.files[0]));
     }
   };
 
@@ -55,6 +56,7 @@ function UserAccountLogic() {
           getSocialField(link?.name, link?.link)
         )
       );
+      setBio((prev) => resUser?.bio);
       setState((prev) => resUser?.state);
       setCountry((prev) => resUser?.country);
       setSkills((prev) => resUser?.skills);
@@ -65,6 +67,8 @@ function UserAccountLogic() {
         image: resUser?.image,
         imageId: resUser?.imageId,
       }));
+      setImagePreview((prev) => resUser?.image);
+      setImage((prev) => resUser?.image);
     } catch (error) {
       console.log(error);
     }
@@ -81,14 +85,6 @@ function UserAccountLogic() {
       placeholder: "Enter your name",
       value: name,
       cb: setName,
-    },
-    {
-      label: "Bio",
-      name: "bio",
-      placeholder: "Enter your bio",
-      value: bio,
-      cb: setBio,
-      type: "textarea",
     },
     {
       label: "Skills",
@@ -172,24 +168,39 @@ function UserAccountLogic() {
         </button>
       ),
     },
+    {
+      label: "Bio",
+      name: "bio",
+      placeholder: "Enter your bio",
+      value: bio,
+      cb: setBio,
+      type: "textarea",
+    },
   ];
 
-  // const getCommunityData = useCallback(async () => {
-  //   try {
-  //     const response = await axios.get('/community', {
-  //       headers: {
-  //         Authorization: `Bearer ${user.accessToken}`
-  //       }
-  //     })
-  //     setCommunities(prev => response.data)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }, [])
+  const getCommunityData = useCallback(async () => {
+    try {
+      const { data } = await axios.get("/community/get/user-communities", {
+        headers: {
+          Authorization: `Bearer ${user.accessToken}`,
+        },
+      });
+      console.log(data);
+      setCommunities((prev) =>
+        data.communities.map((community) => ({
+          ...community,
+          userId: data.userId,
+        }))
+      );
+      setUserId((prev) => data.userId);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
-  // useEffect(() => {
-  //   getCommunityData()
-  // }, [getCommunityData])
+  useEffect(() => {
+    getCommunityData();
+  }, [getCommunityData]);
 
   const removeSocialField = (e) => {
     e?.preventDefault();
@@ -301,8 +312,7 @@ function UserAccountLogic() {
       toast.error(
         err?.response?.data?.message || err?.message || "Something went wrong"
       );
-    }
-    finally {
+    } finally {
       localStorage.removeItem("community-user");
       setUser((prev) => null);
     }
@@ -319,7 +329,8 @@ function UserAccountLogic() {
       setSigningup((prev) => true);
       let uploadedFile, filePreviewUrl, imageId;
       const storage = new Storage(client);
-      if (typeof image !== "string") {
+      console.log(image);
+      if (typeof image !== "string" && image !== null && image !== undefined) {
         if (userInfo?.imageId) {
           const deletedFile = await storage.deleteFile(
             import.meta.env.VITE_APPWRITE_IMAGES_BUCKET_ID,
@@ -331,12 +342,12 @@ function UserAccountLogic() {
           ID.unique(),
           image
         );
-          imageId = uploadedFile.$id;
+        imageId = uploadedFile.$id;
         filePreviewUrl = await storage.getFilePreview(
           uploadedFile.bucketId,
           uploadedFile.$id
         );
-      } else if (image === null) {
+      } else if (image === null && image !== undefined && userInfo?.imageId) {
         const deletedFile = await storage.deleteFile(
           process.env.REACT_APP_IMAGES_BUCKET_ID,
           userInfo?.imageId
@@ -406,7 +417,9 @@ function UserAccountLogic() {
     userInfo,
     logoutUser,
     handleImage,
-    imagePreview
+    imagePreview,
+    communities,
+    userId
   };
 }
 

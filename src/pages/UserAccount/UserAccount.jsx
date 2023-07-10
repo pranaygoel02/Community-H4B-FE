@@ -3,6 +3,7 @@ import UserAccountLogic from "../../logic/useraccount.logic";
 import Input from "../../components/Input/Input";
 import { BiCamera, BiSolidUserCircle } from "react-icons/bi";
 import { MdAddCircle, MdRemoveCircle } from "react-icons/md";
+import CommunityList from "../../components/Community/CommunityList";
 
 function UserAccount() {
   const {
@@ -16,6 +17,8 @@ function UserAccount() {
     logoutUser,
     handleImage,
     imagePreview,
+    communities,
+    userId
   } = UserAccountLogic();
 
   const fileRef = useRef(null);
@@ -28,7 +31,7 @@ function UserAccount() {
         >
           {imagePreview || userInfo?.image ? (
             <img
-              src={userInfo?.image || imagePreview}
+              src={imagePreview || userInfo?.image}
               className="w-32 h-32 md:w-52 md:h-52 aspect-square rounded-full text-black/20"
             />
           ) : (
@@ -88,6 +91,10 @@ function UserAccount() {
           {signingup ? "Saving...." : "Save Changes"}
         </button>
       </form>
+      <div>
+      <h2 className="text-3xl py-4 mt-8 font-bold">Communities Enrolled</h2>
+      {communities && <CommunityList userId={userId} data={communities}/>}
+      </div>
       <div></div>
       <div></div>
     </section>
