@@ -3,6 +3,9 @@ import Stars from '../../assets/images/stars.svg';
 import Butterfly from '../../assets/images/butterfly.svg';
 import Sponsor from '../../assets/images/sponsor.svg';
 import { Link } from 'react-router-dom';
+import ScaleCommunity from '../../assets/images/scaleEvent.png'
+import Postman from '../../assets/images/postman.png'
+import Filecoin from '../../assets/images/filecoin.png'
 
 const LandingPage = () => {
   const dataCard=[1,2,3,4]
@@ -37,7 +40,7 @@ const LandingPage = () => {
                 <Link to={'/create-community'} className='w-[200px] h-[36px]  bg-neutral text-black rounded-3xl'>Try the platform free</Link>
                 <button className=' w-[200px] h-[36px] box-shadow-fixed bg-neutral text-black rounded-3xl border-1'>Book for a call</button>
             </div>
-            <img className=" mx-w-[850px] mx-h-[540px] text-center object-cover" src={"https://placehold.co/600x400"} />
+            <img className=" mx-w-[850px] mx-h-[540px] text-center object-cover" src={ScaleCommunity} />
 
         </div>
        {/*  <div className="absolute right-[2%] -top-[1.4%] md:right-[10.7%] md:-top-[9.2%] h-10 md:h-12 aspect-square bg-orche rotate-45"><img src={Butterfly}/></div>
@@ -49,7 +52,7 @@ const LandingPage = () => {
        <div className='grid md:grid-cols-3 sm:grid-cols-2 '>
          {sponsor.map((obj,id)=>(
             <div className='flex-row flex justify-center my-10'>
-            <img src={Sponsor}/>
+               <img src={Sponsor}/>
             </div>
          ))} 
        </div>

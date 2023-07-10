@@ -93,9 +93,8 @@ function Landing() {
           transition={{ ...transition }}
           className="md:max-w-[60%] mx-auto"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh cras
-          pulvinar mattis nunc sed blandit.
+          Discover all the communities near you, get exclusive access toevents happening right now and 
+join the communities to stay updated !
         </motion.p>
         <motion.form
           initial={initial}
@@ -120,11 +119,10 @@ function Landing() {
         className="container-padding bg-white grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 items-center gap-8"
       >
         <div className="space-y-8 md:col-span-2 lg:col-span-3">
-          <h1 className="font-bold text-5xl">What is Lorem Ipsom?</h1>
+          <h1 className="font-bold text-5xl">What is Cohost?</h1>
           <p className="">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh
-            cras pulvinar mattis nunc sed blandit.
+          Cohost is a B2C platform aiming to bring all the Indian communities under one roof
+to enhance the networking skills and engaging mindset of Indian tech minds.
           </p>
         </div>
         <img
