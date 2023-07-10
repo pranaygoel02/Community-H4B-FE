@@ -26,6 +26,24 @@ function Landing() {
       tag: 'Share'
     }
   ]
+  const dataCard=[
+    {
+      numbers:10,
+      heading:"Communities "
+    },
+    {
+      numbers:16,
+      heading:"Visited Users"
+    },
+    {
+      numbers:15,
+      heading:"Events Listed"
+    },
+    {
+      numbers:20,
+      heading:"Registered Users"
+    }
+  ]
 
   const handleLocSearch = (e) => {
     e.preventDefault()
@@ -76,6 +94,14 @@ function Landing() {
             ))
           }
         </div>
+      </section>
+      <section className="container-padding-mini flex flex-row justify-around gap-3 flex-wrap">
+          {dataCard.map((obj,id)=>(
+            <div className="col-span-1 text-center w-[161px] h-[121px] flex flex-col justify-center items-center ">
+                <p className="text-5xl">{obj.numbers}+</p>
+                <p className="text-grostek  text-xl ">{obj.heading}</p>
+            </div>
+          ))}
       </section>
       <CommunityCategory/>
       <CreateAccount/>

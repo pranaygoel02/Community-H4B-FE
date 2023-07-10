@@ -16,6 +16,7 @@ import UserAccount from "./pages/UserAccount/UserAccount";
 import SingleCommunity from "./pages/SingleCommunity/SingleCommunity";
 import CreateCommunity from "./pages/Community/CreateCommunity";
 import Login from "./pages/Auth/Login/Login";
+import LandingPage from './pages/ScalingCommunity/LandingPage';
 import Notifications from "./pages/Notifications/Notifications";
 
 function App() {
@@ -76,6 +77,7 @@ function App() {
               }
             /> */}
             <Route path="*" element={<h1>404</h1>} />
+            <Route path="/scale" element={<LandingPage/>} />
           </Routes>
         </section>
               
