@@ -12,6 +12,7 @@ import { BiLogOut, BiNotification, BiUser } from "react-icons/bi";
 import { FcSettings } from "react-icons/fc";
 import { MdCreate, MdNotifications, MdSettings } from "react-icons/md";
 import { motion } from "framer-motion";
+import { FaHandshake } from "react-icons/fa";
 import Logo from '../../assets/images/logo.svg'
 
 function Navbar() {
@@ -107,7 +108,7 @@ function Navbar() {
                 >
                   My Account
                 </NavLink>
-                <div className="grid-rows-0 h-0 group-hover:grid-rows-1 group-hover:h-[200px] transition-all duration-500 ease-out absolute top-12 -right-5 overflow-hidden">
+                <div className="grid-rows-0 h-0 group-hover:grid-rows-1 group-hover:h-[250px] transition-all duration-500 ease-out absolute top-12 -right-5 overflow-hidden">
                   <div
                     id="sub-nav-links"
                     className="flex flex-col gap-4 items-start justify-start input-div w-max text-left"
@@ -123,6 +124,12 @@ function Navbar() {
                       to="/notifications"
                     >
                       <MdNotifications /> Notification
+                    </Link>
+                    <Link
+                      className="hover:text-primary w-full"
+                      to="/partner-community"
+                    >
+                      <FaHandshake /> Partner as community
                     </Link>
                     <Link
                       className="hover:text-primary w-full"
