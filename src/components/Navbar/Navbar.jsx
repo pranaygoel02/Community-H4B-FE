@@ -131,12 +131,12 @@ function Navbar() {
                     >
                       <FaHandshake /> Partner as community
                     </Link>
-                    <Link
+                    {/* <Link
                       className="hover:text-primary w-full"
                       to="/create-community"
                     >
                       <MdCreate /> Create Community
-                    </Link>
+                    </Link> */}
                     <Link className="hover:text-primary w-full" to="/settings">
                       <MdSettings /> Settings
                     </Link>

@@ -67,13 +67,13 @@ function Community() {
               <hr className="w-full hidden sm:block border-[1px]" />
             </div>
             <div className="flex flex-row border-2 border-black overflow-hidden justify-center h-[520px] relative">
-              <Link
+              {/* <Link
                 to={"/map"}
                 className="absolute z-10 top-0 left-0 btn-small m-2"
               >
                 View full map
-              </Link>
-              <Map showDataList={false} width="1170px" height="520px" />
+              </Link> */}
+              {communityData && <Map communities={communityData} showDataList={false} width="1170px" height="520px" />}
             </div>
           </section>
           <section className="bg-accent">
