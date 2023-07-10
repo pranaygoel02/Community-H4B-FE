@@ -76,8 +76,8 @@ function App() {
                 </ProtectedRoute>
               }
             /> */}
+            <Route path="/partner-community" element={<LandingPage/>} />
             <Route path="*" element={<h1>404</h1>} />
-            <Route path="/scale" element={<LandingPage/>} />
           </Routes>
         </section>
               

@@ -1,7 +1,7 @@
 import React from "react";
 import { FiUpload } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { BsFacebook } from 'react-icons/bs';
+import { BsFacebook, BsTwitter } from 'react-icons/bs';
 import { FaInstagram } from 'react-icons/fa';
 import { BsLinkedin } from 'react-icons/bs';
 import { BsGoogle } from 'react-icons/bs';
@@ -13,7 +13,7 @@ const socialLinkIcons = {
   facebook: <BsFacebook className='w-[25px] h-[25px]'/>,
   instagram: <FaInstagram className='w-[25px] h-[25px]'/>,
   linkedin: <BsLinkedin className='w-[25px] h-[25px]'/>,
-  google: <BsGoogle className='w-[25px] h-[25px]'/>,
+  twitter: <BsTwitter className='w-[25px] h-[25px]'/>,
 } 
 
 function CommunityCard({ socialLinks, image, name: title, description, category: categories, _id, leaderId, userId }) {
@@ -32,6 +32,25 @@ function CommunityCard({ socialLinks, image, name: title, description, category:
       });
       console.log(response.data);
       toast.success('Notification sent to the community leader');
+    }
+    catch(error) {
+      console.log(error);
+      toast.error(error.response.data.message || 'Something went wrong');
+    }
+  }
+
+  const deleteCommunity = async (e) => {
+    e.preventDefault()
+    const ans = window.confirm('Are you sure you want to delete this community?')
+    if(!ans) return;
+    try {
+      const {data} = await axios.delete(`/community/${_id}`, {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`
+        }
+      })
+      toast.success(data.message);
+      window.location.reload();
     }
     catch(error) {
       console.log(error);
@@ -62,6 +81,7 @@ function CommunityCard({ socialLinks, image, name: title, description, category:
       <div className="flex flex-col-reverse xs:flex-row-reverse flex-wrap lg:flex-col items-center lg:items-end gap-y-5 md:col-span-3 lg:col-span-2 h-full justify-between">
         {leaderId !== userId && <button onClick={joinCommunity} className="btn-small flex items-start">Join Now</button>}
         {leaderId === userId && <div className="inline-flex gap-4 w-full justify-center xs:justify-start flex-wrap md:justify-end">
+          <button onClick={deleteCommunity} className="btn-small">Delete</button>
           <Link to={`/create-community?id=${_id}`} className="btn-small">Edit</Link>
           <Link to={`/community/${_id}`} className="btn-small">Learn More</Link>
           </div>} 

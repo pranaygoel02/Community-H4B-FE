@@ -2,6 +2,7 @@ import React from 'react';
 import Stars from '../../assets/images/stars.svg';
 import Butterfly from '../../assets/images/butterfly.svg';
 import Sponsor from '../../assets/images/sponsor.svg';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   const dataCard=[1,2,3,4]
@@ -30,10 +31,10 @@ const LandingPage = () => {
     <>
     <section className='container-padding bg-primary '>
         <div className='max-w-screen-md mx-auto justify-center flex flex-col text-center text-white space-y-12'>
-            <p className='text-4xl font-bold px-[5%] md:px-[20%]'>Where <span className='tag-scale text-xl'>Events</span>Folks hangout & chill</p>
+            <p className='text-5xl font-extrabold px-[5%] md:px-[20%]'>Where<span className='tag-scale text-xl'>Events</span>Folks hangout & chill</p>
             <p className='px-[5%] md:px-[20%]'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem fugiat ea nulla fugit deserunt ut debitis illum earum corporis expedita </p>
             <div className='px-[5%] md:px-[20%] flex flex-row justify-center flex-wrap gap-3 '>
-                <button className='w-[200px] h-[36px]  bg-neutral text-black rounded-3xl'>Try the platform free</button>
+                <Link to={'/create-community'} className='w-[200px] h-[36px]  bg-neutral text-black rounded-3xl'>Try the platform free</Link>
                 <button className=' w-[200px] h-[36px] box-shadow-fixed bg-neutral text-black rounded-3xl border-1'>Book for a call</button>
             </div>
             <img className=" mx-w-[850px] mx-h-[540px] text-center object-cover" src={"https://placehold.co/600x400"} />
